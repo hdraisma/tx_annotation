@@ -1,0 +1,1295 @@
+As at 2023-03-08 18:07GMT (HD):
+--
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ conda env list
+# conda environments:
+#
+base                  *  /home/hammie/anaconda3
+dx                       /home/hammie/anaconda3/envs/dx
+imlabtools               /home/hammie/anaconda3/envs/imlabtools
+ldsc                     /home/hammie/anaconda3/envs/ldsc
+
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ conda create --name tx_annotation
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.12.0
+  latest version: 23.1.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/hammie/anaconda3/envs/tx_annotation
+
+
+
+Proceed ([y]/n)? 
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate tx_annotation
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-08 18:11GMT (HD), based on "https://hail.is/docs/0.2/install/linux.html#install-hail-on-gnu-linux":
+--
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ conda activate tx_annotation
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ apt-get install -y \
+>     openjdk-8-jre-headless \
+>     g++ \
+>     python3.7 python3-pip \
+>     libopenblas-base liblapack3
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ sudo apt-get install -y     openjdk-8-jre-headless     g++     python3.7 python3-pip     libopenblas-base liblapack3
+[sudo] password for hammie: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Note: selecting 'python3.7-2to3' for regex 'python3.7'
+Note: selecting 'libpython3.7-stdlib' for regex 'python3.7'
+g++ is already the newest version (4:9.3.0-1ubuntu2).
+g++ set to manually installed.
+liblapack3 is already the newest version (3.9.0-1build1).
+liblapack3 set to manually installed.
+python3-pip is already the newest version (20.0.2-5ubuntu1.8).
+The following packages were automatically installed and are no longer required:
+  coinor-libcbc3 coinor-libcgl1 coinor-libclp1 coinor-libcoinmp1v5 coinor-libcoinutils3v5
+  coinor-libosi1v5 libcmis-0.5-5v5 libfwupdplugin1 libgpgmepp6 ubuntu-advantage-desktop-daemon
+  zenpower
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libopenblas0 libopenblas0-pthread
+Suggested packages:
+  fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei fonts-wqy-zenhei
+The following NEW packages will be installed
+  libopenblas-base libopenblas0 libopenblas0-pthread openjdk-8-jre-headless
+0 to upgrade, 4 to newly install, 0 to remove and 56 not to upgrade.
+Need to get 37.4 MB of archives.
+After this operation, 200 MB of additional disk space will be used.
+Get:1 http://gb.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libopenblas0-pthread amd64 0.3.8+ds-1ubuntu0.20.04.1 [9,127 kB]
+Get:2 http://gb.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libopenblas0 amd64 0.3.8+ds-1ubuntu0.20.04.1 [5,892 B]
+Get:3 http://gb.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libopenblas-base amd64 0.3.8+ds-1ubuntu0.20.04.1 [4,748 B]
+Get:4 http://gb.archive.ubuntu.com/ubuntu focal-updates/universe amd64 openjdk-8-jre-headless amd64 8u362-ga-0ubuntu1~20.04.1 [28.2 MB]
+Fetched 37.4 MB in 56s (673 kB/s)                                                                   
+Selecting previously unselected package libopenblas0-pthread:amd64.
+(Reading database ... 244802 files and directories currently installed.)
+Preparing to unpack .../libopenblas0-pthread_0.3.8+ds-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking libopenblas0-pthread:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+Selecting previously unselected package libopenblas0:amd64.
+Preparing to unpack .../libopenblas0_0.3.8+ds-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking libopenblas0:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+Selecting previously unselected package libopenblas-base:amd64.
+Preparing to unpack .../libopenblas-base_0.3.8+ds-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking libopenblas-base:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+Selecting previously unselected package openjdk-8-jre-headless:amd64.
+Preparing to unpack .../openjdk-8-jre-headless_8u362-ga-0ubuntu1~20.04.1_amd64.deb ...
+Unpacking openjdk-8-jre-headless:amd64 (8u362-ga-0ubuntu1~20.04.1) ...
+Setting up libopenblas0-pthread:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 to provide /usr/lib/x86_64-linux-gnu/libblas.so.3 (libblas.so.3-x86_64-linux-gnu) in auto mode
+update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas-pthread/liblapack.so.3 to provide /usr/lib/x86_64-linux-gnu/liblapack.so.3 (liblapack.so.3-x86_64-linux-gnu) in auto mode
+update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblas.so.0 to provide /usr/lib/x86_64-linux-gnu/libopenblas.so.0 (libopenblas.so.0-x86_64-linux-gnu) in auto mode
+Setting up openjdk-8-jre-headless:amd64 (8u362-ga-0ubuntu1~20.04.1) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/servertool to provide /usr/bin/servertool (servertool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv) in auto mode
+Setting up libopenblas0:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+Setting up libopenblas-base:amd64 (0.3.8+ds-1ubuntu0.20.04.1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3.7 -m pip install hail
+
+Command 'python3.7' not found, did you mean:
+
+  command 'python3.8' from deb python3.8 (3.8.10-0ubuntu1~20.04.6)
+  command 'python2.7' from deb python2.7 (2.7.18-1~20.04.3)
+  command 'python3.9' from deb python3.9 (3.9.5-3ubuntu0~20.04.1)
+
+Try: sudo apt install <deb name>
+
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python --version
+Python 2.7.18
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 --version
+Python 3.8.10
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m pip install hail
+/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+Collecting hail
+  Downloading hail-0.2.109-py3-none-any.whl (142.6 MB)
+     |████████████████████████████████| 142.6 MB 105 kB/s 
+Collecting hurry.filesize<1,>=0.9
+  Downloading hurry.filesize-0.9.tar.gz (2.8 kB)
+Collecting aiohttp<4,>=3.8.1
+  Downloading aiohttp-3.8.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+     |████████████████████████████████| 1.0 MB 1.3 MB/s 
+Collecting bokeh==1.4.0
+  Downloading bokeh-1.4.0.tar.gz (32.4 MB)
+     |████████████████████████████████| 32.4 MB 1.1 MB/s 
+Collecting protobuf==3.20.2
+  Downloading protobuf-3.20.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+     |████████████████████████████████| 1.0 MB 821 kB/s 
+Collecting boto3<2.0,>=1.17
+  Downloading boto3-1.26.86-py3-none-any.whl (134 kB)
+     |████████████████████████████████| 134 kB 1.1 MB/s 
+Collecting orjson<4,>=3.6.4
+  Downloading orjson-3.8.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (271 kB)
+     |████████████████████████████████| 271 kB 1.4 MB/s 
+Collecting uvloop<1,>=0.16.0; sys_platform != "win32"
+  Downloading uvloop-0.17.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+     |████████████████████████████████| 4.6 MB 950 kB/s 
+Requirement already satisfied: PyJWT in /usr/lib/python3/dist-packages (from hail) (1.7.1)
+Collecting asyncinit<0.3,>=0.2.4
+  Downloading asyncinit-0.2.4-py3-none-any.whl (2.8 kB)
+Collecting botocore<2.0,>=1.20
+  Downloading botocore-1.29.86-py3-none-any.whl (10.5 MB)
+     |████████████████████████████████| 10.5 MB 2.1 MB/s 
+Collecting sortedcontainers<3,>=2.4.0
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Collecting nest-asyncio<2,>=1.5.4
+  Downloading nest_asyncio-1.5.6-py3-none-any.whl (5.2 kB)
+Collecting pandas<1.6.0,>=1.3.0
+  Downloading pandas-1.5.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     |████████████████████████████████| 12.2 MB 281 kB/s 
+Collecting plotly<5.11,>=5.5.0
+  Downloading plotly-5.10.0-py2.py3-none-any.whl (15.2 MB)
+     |████████████████████████████████| 15.2 MB 2.4 MB/s 
+Collecting pyspark<3.2.0,>=3.1.1
+  Downloading pyspark-3.1.3.tar.gz (214.0 MB)
+     |████████████████████████████████| 214.0 MB 1.7 MB/s 
+Collecting numpy<2
+  Downloading numpy-1.24.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+     |████████████████████████████████| 17.3 MB 1.6 MB/s 
+Collecting humanize<2,>=1.0.0
+  Downloading humanize-1.1.0-py3-none-any.whl (52 kB)
+     |████████████████████████████████| 52 kB 791 kB/s 
+Collecting google-cloud-storage>=1.25.*
+  Downloading google_cloud_storage-2.7.0-py2.py3-none-any.whl (110 kB)
+     |████████████████████████████████| 110 kB 1.2 MB/s 
+Collecting tabulate<1,>=0.8.9
+  Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Collecting dill<0.4,>=0.3.1.1
+  Downloading dill-0.3.6-py3-none-any.whl (110 kB)
+     |████████████████████████████████| 110 kB 1.6 MB/s 
+Collecting aiohttp-session<2.13,>=2.7
+  Downloading aiohttp_session-2.12.0-py3-none-any.whl (12 kB)
+Collecting rich==12.6.0
+  Downloading rich-12.6.0-py3-none-any.whl (237 kB)
+     |████████████████████████████████| 237 kB 1.5 MB/s 
+Collecting azure-storage-blob<13,>=12.11.0
+  Downloading azure_storage_blob-12.15.0-py3-none-any.whl (387 kB)
+     |████████████████████████████████| 387 kB 1.5 MB/s 
+Collecting frozenlist<2,>=1.3.1
+  Downloading frozenlist-1.3.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (161 kB)
+     |████████████████████████████████| 161 kB 715 kB/s 
+Collecting python-json-logger<3,>=2.0.2
+  Downloading python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
+Collecting scipy<1.10,>1.2
+  Downloading scipy-1.9.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (33.8 MB)
+     |████████████████████████████████| 33.8 MB 1.1 MB/s 
+Collecting decorator<5
+  Downloading decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+Collecting azure-identity<2,>=1.6.0
+  Downloading azure_identity-1.12.0-py3-none-any.whl (135 kB)
+     |████████████████████████████████| 135 kB 1.2 MB/s 
+Collecting janus<1.1,>=0.6
+  Downloading janus-1.0.0-py3-none-any.whl (6.9 kB)
+Collecting Deprecated<1.3,>=1.2.10
+  Downloading Deprecated-1.2.13-py2.py3-none-any.whl (9.6 kB)
+Collecting avro<1.12,>=1.10
+  Downloading avro-1.11.1.tar.gz (84 kB)
+     |████████████████████████████████| 84 kB 1.3 MB/s 
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+    Preparing wheel metadata ... done
+Collecting parsimonious<0.9
+  Downloading parsimonious-0.8.1.tar.gz (45 kB)
+     |████████████████████████████████| 45 kB 1.4 MB/s 
+Collecting requests<3,>=2.25.1
+  Downloading requests-2.28.2-py3-none-any.whl (62 kB)
+     |████████████████████████████████| 62 kB 834 kB/s 
+Collecting Jinja2==3.0.3
+  Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+     |████████████████████████████████| 133 kB 1.1 MB/s 
+Collecting google-auth==2.14.1
+  Downloading google_auth-2.14.1-py2.py3-none-any.whl (175 kB)
+     |████████████████████████████████| 175 kB 1.0 MB/s 
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from hurry.filesize<1,>=0.9->hail) (45.2.0)
+Collecting aiosignal>=1.1.2
+  Downloading aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
+Collecting charset-normalizer<4.0,>=2.0
+  Downloading charset_normalizer-3.1.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (195 kB)
+     |████████████████████████████████| 195 kB 989 kB/s 
+Collecting yarl<2.0,>=1.0
+  Downloading yarl-1.8.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (262 kB)
+     |████████████████████████████████| 262 kB 1.1 MB/s 
+Collecting async-timeout<5.0,>=4.0.0a3
+  Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
+Collecting multidict<7.0,>=4.5
+  Downloading multidict-6.0.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (121 kB)
+     |████████████████████████████████| 121 kB 1.1 MB/s 
+Collecting attrs>=17.3.0
+  Downloading attrs-22.2.0-py3-none-any.whl (60 kB)
+     |████████████████████████████████| 60 kB 919 kB/s 
+Requirement already satisfied: PyYAML>=3.10 in /usr/lib/python3/dist-packages (from bokeh==1.4.0->hail) (5.3.1)
+Collecting packaging>=16.8
+  Downloading packaging-23.0-py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB 434 kB/s 
+Requirement already satisfied: pillow>=4.0 in /usr/lib/python3/dist-packages (from bokeh==1.4.0->hail) (7.0.0)
+Requirement already satisfied: python-dateutil>=2.1 in /usr/lib/python3/dist-packages (from bokeh==1.4.0->hail) (2.7.3)
+Requirement already satisfied: six>=1.5.2 in /usr/lib/python3/dist-packages (from bokeh==1.4.0->hail) (1.14.0)
+Collecting tornado>=4.3
+  Downloading tornado-6.2-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (423 kB)
+     |████████████████████████████████| 423 kB 822 kB/s 
+Collecting s3transfer<0.7.0,>=0.6.0
+  Downloading s3transfer-0.6.0-py3-none-any.whl (79 kB)
+     |████████████████████████████████| 79 kB 363 kB/s 
+Collecting jmespath<2.0.0,>=0.7.1
+  Downloading jmespath-1.0.1-py3-none-any.whl (20 kB)
+Requirement already satisfied: urllib3<1.27,>=1.25.4 in /usr/lib/python3/dist-packages (from botocore<2.0,>=1.20->hail) (1.25.8)
+Collecting pytz>=2020.1
+  Downloading pytz-2022.7.1-py2.py3-none-any.whl (499 kB)
+     |████████████████████████████████| 499 kB 1.2 MB/s 
+Collecting tenacity>=6.2.0
+  Downloading tenacity-8.2.2-py3-none-any.whl (24 kB)
+Collecting py4j==0.10.9
+  Downloading py4j-0.10.9-py2.py3-none-any.whl (198 kB)
+     |████████████████████████████████| 198 kB 1.3 MB/s 
+Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0dev,>=1.31.5
+  Downloading google_api_core-2.11.0-py3-none-any.whl (120 kB)
+     |████████████████████████████████| 120 kB 1.2 MB/s 
+Collecting google-resumable-media>=2.3.2
+  Downloading google_resumable_media-2.4.1-py2.py3-none-any.whl (77 kB)
+     |████████████████████████████████| 77 kB 1.4 MB/s 
+Collecting google-cloud-core<3.0dev,>=2.3.0
+  Downloading google_cloud_core-2.3.2-py2.py3-none-any.whl (29 kB)
+Collecting commonmark<0.10.0,>=0.9.0
+  Downloading commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+     |████████████████████████████████| 51 kB 1.2 MB/s 
+Collecting typing-extensions<5.0,>=4.0.0; python_version < "3.9"
+  Downloading typing_extensions-4.5.0-py3-none-any.whl (27 kB)
+Collecting pygments<3.0.0,>=2.6.0
+  Downloading Pygments-2.14.0-py3-none-any.whl (1.1 MB)
+     |████████████████████████████████| 1.1 MB 979 kB/s 
+Requirement already satisfied: cryptography>=2.1.4 in /home/hammie/.local/lib/python3.8/site-packages (from azure-storage-blob<13,>=12.11.0->hail) (36.0.2)
+Collecting isodate>=0.6.1
+  Downloading isodate-0.6.1-py2.py3-none-any.whl (41 kB)
+     |████████████████████████████████| 41 kB 643 kB/s 
+Collecting azure-core<2.0.0,>=1.26.0
+  Downloading azure_core-1.26.3-py3-none-any.whl (174 kB)
+     |████████████████████████████████| 174 kB 1.5 MB/s 
+Collecting msal-extensions<2.0.0,>=0.3.0
+  Downloading msal_extensions-1.0.0-py2.py3-none-any.whl (19 kB)
+Collecting msal<2.0.0,>=1.12.0
+  Downloading msal-1.21.0-py2.py3-none-any.whl (89 kB)
+     |████████████████████████████████| 89 kB 2.0 MB/s 
+Collecting wrapt<2,>=1.10
+  Downloading wrapt-1.15.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (81 kB)
+     |████████████████████████████████| 81 kB 1.3 MB/s 
+Requirement already satisfied: certifi>=2017.4.17 in /usr/lib/python3/dist-packages (from requests<3,>=2.25.1->hail) (2019.11.28)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3/dist-packages (from requests<3,>=2.25.1->hail) (2.8)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting cachetools<6.0,>=2.0.0
+  Downloading cachetools-5.3.0-py3-none-any.whl (9.3 kB)
+Collecting rsa<5,>=3.1.4; python_version >= "3.6"
+  Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Collecting pyasn1-modules>=0.2.1
+  Downloading pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+     |████████████████████████████████| 155 kB 1.5 MB/s 
+Collecting googleapis-common-protos<2.0dev,>=1.56.2
+  Downloading googleapis_common_protos-1.58.0-py2.py3-none-any.whl (223 kB)
+     |████████████████████████████████| 223 kB 1.6 MB/s 
+Collecting google-crc32c<2.0dev,>=1.0
+  Downloading google_crc32c-1.5.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (32 kB)
+Requirement already satisfied: cffi>=1.12 in /home/hammie/.local/lib/python3.8/site-packages (from cryptography>=2.1.4->azure-storage-blob<13,>=12.11.0->hail) (1.15.1)
+Collecting portalocker<3,>=1.0; python_version >= "3.5" and platform_system != "Windows"
+  Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+Collecting pyasn1>=0.1.3
+  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+     |████████████████████████████████| 77 kB 1.1 MB/s 
+Requirement already satisfied: pycparser in /home/hammie/.local/lib/python3.8/site-packages (from cffi>=1.12->cryptography>=2.1.4->azure-storage-blob<13,>=12.11.0->hail) (2.21)
+Building wheels for collected packages: hurry.filesize, bokeh, pyspark, avro, parsimonious
+  Building wheel for hurry.filesize (setup.py) ... done
+  Created wheel for hurry.filesize: filename=hurry.filesize-0.9-py3-none-any.whl size=4115 sha256=c82dd992635a1fc9eff025a7061b562ff56b671b6d210c0ca040cb16b7f3ebec
+  Stored in directory: /home/hammie/.cache/pip/wheels/15/4b/2b/e1eaf7375b72542a9a3f3c3fa66b7098cc9e8048fe345deace
+  Building wheel for bokeh (setup.py) ... done
+  Created wheel for bokeh: filename=bokeh-1.4.0-py3-none-any.whl size=23689200 sha256=2283d75698863fab1d288eae1e47e57c5ed3a3c9893e16b4cd29ce74cee8e5ac
+  Stored in directory: /home/hammie/.cache/pip/wheels/4a/79/96/e953cfb5c24da5e5e03eb1ecb280ca88dce65661fb4d38c7b5
+  Building wheel for pyspark (setup.py) ... done
+  Created wheel for pyspark: filename=pyspark-3.1.3-py2.py3-none-any.whl size=214463482 sha256=296585ce8a47a1cbb9003fc1599fde53684e1714efdce6f30dc8b49804eadec8
+  Stored in directory: /home/hammie/.cache/pip/wheels/d1/b2/3a/d019c9382e6429910cef8ef0aae6a1970bfbbba13562590d70
+  Building wheel for avro (PEP 517) ... done
+  Created wheel for avro: filename=avro-1.11.1-py2.py3-none-any.whl size=116717 sha256=f721fa68c75e506eb22ca9f39affb8566c9825824745ce95086f8ff639be1831
+  Stored in directory: /home/hammie/.cache/pip/wheels/27/d5/22/e3641b9a6a2669624c1d515f942bf8187f03c5c2151e13a76e
+  Building wheel for parsimonious (setup.py) ... done
+  Created wheel for parsimonious: filename=parsimonious-0.8.1-py3-none-any.whl size=42709 sha256=4ec57ca8e380b9b705e1bfbcf2e611c24cc66136762024eab23ce4c5b2c256e4
+  Stored in directory: /home/hammie/.cache/pip/wheels/d8/af/19/fb896f509a437aca2dcf62583e84d7fb2cd5b628c1564a609c
+Successfully built hurry.filesize bokeh pyspark avro parsimonious
+ERROR: dxpy 0.341.0 has requirement requests<=2.27.1,>=2.8.0, but you'll have requests 2.28.2 which is incompatible.
+ERROR: pandas 1.5.3 has requirement python-dateutil>=2.8.1, but you'll have python-dateutil 2.7.3 which is incompatible.
+Installing collected packages: hurry.filesize, frozenlist, aiosignal, charset-normalizer, multidict, yarl, async-timeout, attrs, aiohttp, MarkupSafe, Jinja2, numpy, packaging, tornado, bokeh, protobuf, jmespath, botocore, s3transfer, boto3, orjson, uvloop, asyncinit, sortedcontainers, nest-asyncio, pytz, pandas, tenacity, plotly, py4j, pyspark, humanize, requests, googleapis-common-protos, cachetools, pyasn1, rsa, pyasn1-modules, google-auth, google-api-core, google-crc32c, google-resumable-media, google-cloud-core, google-cloud-storage, tabulate, dill, aiohttp-session, commonmark, typing-extensions, pygments, rich, isodate, azure-core, azure-storage-blob, python-json-logger, scipy, decorator, msal, portalocker, msal-extensions, azure-identity, janus, wrapt, Deprecated, avro, parsimonious, hail
+Successfully installed Deprecated-1.2.13 Jinja2-3.0.3 MarkupSafe-2.1.2 aiohttp-3.8.4 aiohttp-session-2.12.0 aiosignal-1.3.1 async-timeout-4.0.2 asyncinit-0.2.4 attrs-22.2.0 avro-1.11.1 azure-core-1.26.3 azure-identity-1.12.0 azure-storage-blob-12.15.0 bokeh-1.4.0 boto3-1.26.86 botocore-1.29.86 cachetools-5.3.0 charset-normalizer-3.1.0 commonmark-0.9.1 decorator-4.4.2 dill-0.3.6 frozenlist-1.3.3 google-api-core-2.11.0 google-auth-2.14.1 google-cloud-core-2.3.2 google-cloud-storage-2.7.0 google-crc32c-1.5.0 google-resumable-media-2.4.1 googleapis-common-protos-1.58.0 hail-0.2.109 humanize-1.1.0 hurry.filesize-0.9 isodate-0.6.1 janus-1.0.0 jmespath-1.0.1 msal-1.21.0 msal-extensions-1.0.0 multidict-6.0.4 nest-asyncio-1.5.6 numpy-1.24.2 orjson-3.8.7 packaging-23.0 pandas-1.5.3 parsimonious-0.8.1 plotly-5.10.0 portalocker-2.7.0 protobuf-3.20.2 py4j-0.10.9 pyasn1-0.4.8 pyasn1-modules-0.2.8 pygments-2.14.0 pyspark-3.1.3 python-json-logger-2.0.7 pytz-2022.7.1 requests-2.28.2 rich-12.6.0 rsa-4.9 s3transfer-0.6.0 scipy-1.9.3 sortedcontainers-2.4.0 tabulate-0.9.0 tenacity-8.2.2 tornado-6.2 typing-extensions-4.5.0 uvloop-0.17.0 wrapt-1.15.0 yarl-1.8.2
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ which hail
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ which dxpy
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pip show dxpy
+Name: dxpy
+Version: 0.341.0
+Summary: DNAnexus Platform API bindings for Python
+Home-page: https://github.com/dnanexus/dx-toolkit
+Author: Aleksandra Zalcman, Andrey Kislyuk, Anurag Biyani, Geet Duggal, Katherine Lai, Kurt Jensen, Marek Hrvol, Ohad Rodeh, Phil Sung
+Author-email: support@dnanexus.com
+License: Apache Software License
+Location: /home/hammie/.local/lib/python3.8/site-packages
+Requires: psutil, cryptography, websocket-client, requests, python-dateutil, argcomplete
+Required-by: 
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m pip install hail --no-dependencies
+/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+Requirement already satisfied: hail in /home/hammie/.local/lib/python3.8/site-packages (0.2.109)
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pip show hail
+Name: hail
+Version: 0.2.109
+Summary: Scalable library for exploring and analyzing genomic data.
+Home-page: https://hail.is
+Author: Hail Team
+Author-email: hail@broadinstitute.org
+License: None
+Location: /home/hammie/.local/lib/python3.8/site-packages
+Requires: azure-storage-blob, Jinja2, requests, aiohttp, pandas, janus, bokeh, aiohttp-session, uvloop, google-cloud-storage, parsimonious, humanize, frozenlist, decorator, plotly, python-json-logger, botocore, avro, Deprecated, rich, asyncinit, hurry.filesize, pyspark, azure-identity, dill, orjson, sortedcontainers, nest-asyncio, protobuf, numpy, google-auth, PyJWT, scipy, boto3, tabulate
+Required-by: 
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+--> Based on "https://stackoverflow.com/a/54995422" option (1): "Run pip with the --no-dependencies argument and hope it will just work" and "https://stackoverflow.com/a/10215100" (usage of "$ pip show"), decided that I'll try and proceed with the apparently currently installed Hail version 'until further notice' (e.g. for one thing, "dxpy" doesn't 'even' seem to be required by Hail so I don't see why it's complaining about it) -- HD as at 2023-03-08 19:27GMT.
+
+
+As at 2023-03-08 19:35GMT (HD), as recommended on "https://hail.is/docs/0.2/install/try.html#your-first-hail-query":
+--
+====
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pip install ipython
+/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+Collecting ipython
+  Downloading ipython-8.11.0-py3-none-any.whl (793 kB)
+     |████████████████████████████████| 793 kB 761 kB/s 
+Collecting backcall
+  Downloading backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Requirement already satisfied: decorator in /home/hammie/.local/lib/python3.8/site-packages (from ipython) (4.4.2)
+Collecting pickleshare
+  Downloading pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting stack-data
+  Downloading stack_data-0.6.2-py3-none-any.whl (24 kB)
+Collecting matplotlib-inline
+  Downloading matplotlib_inline-0.1.6-py3-none-any.whl (9.4 kB)
+Requirement already satisfied: pygments>=2.4.0 in /home/hammie/.local/lib/python3.8/site-packages (from ipython) (2.14.0)
+Collecting traitlets>=5
+  Downloading traitlets-5.9.0-py3-none-any.whl (117 kB)
+     |████████████████████████████████| 117 kB 1.9 MB/s 
+Collecting prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30
+  Downloading prompt_toolkit-3.0.38-py3-none-any.whl (385 kB)
+     |████████████████████████████████| 385 kB 1.7 MB/s 
+Requirement already satisfied: pexpect>4.3; sys_platform != "win32" in /usr/lib/python3/dist-packages (from ipython) (4.6.0)
+Collecting jedi>=0.16
+  Downloading jedi-0.18.2-py2.py3-none-any.whl (1.6 MB)
+     |████████████████████████████████| 1.6 MB 2.0 MB/s 
+Collecting asttokens>=2.1.0
+  Downloading asttokens-2.2.1-py2.py3-none-any.whl (26 kB)
+Collecting executing>=1.2.0
+  Downloading executing-1.2.0-py2.py3-none-any.whl (24 kB)
+Collecting pure-eval
+  Downloading pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting wcwidth
+  Downloading wcwidth-0.2.6-py2.py3-none-any.whl (29 kB)
+Collecting parso<0.9.0,>=0.8.0
+  Downloading parso-0.8.3-py2.py3-none-any.whl (100 kB)
+     |████████████████████████████████| 100 kB 2.0 MB/s 
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from asttokens>=2.1.0->stack-data->ipython) (1.14.0)
+Installing collected packages: backcall, pickleshare, asttokens, executing, pure-eval, stack-data, traitlets, matplotlib-inline, wcwidth, prompt-toolkit, parso, jedi, ipython
+Successfully installed asttokens-2.2.1 backcall-0.2.0 executing-1.2.0 ipython-8.11.0 jedi-0.18.2 matplotlib-inline-0.1.6 parso-0.8.3 pickleshare-0.7.5 prompt-toolkit-3.0.38 pure-eval-0.2.2 stack-data-0.6.2 traitlets-5.9.0 wcwidth-0.2.6
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+However:
+====
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ipython
+Python 3.8.10 (default, Nov 14 2022, 12:59:47) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.11.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import hail as hl
+---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+Cell In[1], line 1
+----> 1 import hail as hl
+
+File ~/.local/lib/python3.8/site-packages/hail/__init__.py:33
+     14 __doc__ = r"""
+     15     __  __     <>__
+     16    / /_/ /__  __/ /
+   (...)
+     27 To report a bug, please open an issue: https://github.com/hail-is/hail/issues
+     28 """
+     30 # F403 'from .expr import *' used; unable to detect undefined names
+     31 # F401 '.expr.*' imported but unused
+     32 # E402 module level import not at top of file
+---> 33 from .table import Table, GroupedTable, asc, desc  # noqa: E402
+     34 from .matrixtable import MatrixTable, GroupedMatrixTable  # noqa: E402
+     35 from .expr import *  # noqa: F401,F403,E402
+
+File ~/.local/lib/python3.8/site-packages/hail/table.py:3
+      1 import collections
+      2 import itertools
+----> 3 import pandas
+      4 import numpy as np
+      5 import pyspark
+
+File ~/.local/lib/python3.8/site-packages/pandas/__init__.py:48
+     45 # let init-time option registration happen
+     46 import pandas.core.config_init  # pyright: ignore # noqa:F401
+---> 48 from pandas.core.api import (
+     49     # dtype
+     50     ArrowDtype,
+     51     Int8Dtype,
+     52     Int16Dtype,
+     53     Int32Dtype,
+     54     Int64Dtype,
+     55     UInt8Dtype,
+     56     UInt16Dtype,
+     57     UInt32Dtype,
+     58     UInt64Dtype,
+     59     Float32Dtype,
+     60     Float64Dtype,
+     61     CategoricalDtype,
+     62     PeriodDtype,
+     63     IntervalDtype,
+     64     DatetimeTZDtype,
+     65     StringDtype,
+     66     BooleanDtype,
+     67     # missing
+     68     NA,
+     69     isna,
+     70     isnull,
+     71     notna,
+     72     notnull,
+     73     # indexes
+     74     Index,
+     75     CategoricalIndex,
+     76     RangeIndex,
+     77     MultiIndex,
+     78     IntervalIndex,
+     79     TimedeltaIndex,
+     80     DatetimeIndex,
+     81     PeriodIndex,
+     82     IndexSlice,
+     83     # tseries
+     84     NaT,
+     85     Period,
+     86     period_range,
+     87     Timedelta,
+     88     timedelta_range,
+     89     Timestamp,
+     90     date_range,
+     91     bdate_range,
+     92     Interval,
+     93     interval_range,
+     94     DateOffset,
+     95     # conversion
+     96     to_numeric,
+     97     to_datetime,
+     98     to_timedelta,
+     99     # misc
+    100     Flags,
+    101     Grouper,
+    102     factorize,
+    103     unique,
+    104     value_counts,
+    105     NamedAgg,
+    106     array,
+    107     Categorical,
+    108     set_eng_float_format,
+    109     Series,
+    110     DataFrame,
+    111 )
+    113 from pandas.core.arrays.sparse import SparseDtype
+    115 from pandas.tseries.api import infer_freq
+
+File ~/.local/lib/python3.8/site-packages/pandas/core/api.py:22
+      9 from pandas.core.dtypes.dtypes import (
+     10     CategoricalDtype,
+     11     DatetimeTZDtype,
+     12     IntervalDtype,
+     13     PeriodDtype,
+     14 )
+     15 from pandas.core.dtypes.missing import (
+     16     isna,
+     17     isnull,
+     18     notna,
+     19     notnull,
+     20 )
+---> 22 from pandas.core.algorithms import (
+     23     factorize,
+     24     unique,
+     25     value_counts,
+     26 )
+     27 from pandas.core.arrays import Categorical
+     28 from pandas.core.arrays.arrow import ArrowDtype
+
+File ~/.local/lib/python3.8/site-packages/pandas/core/algorithms.py:40
+     37 from pandas.util._decorators import doc
+     38 from pandas.util._exceptions import find_stack_level
+---> 40 from pandas.core.dtypes.cast import (
+     41     construct_1d_object_array_from_listlike,
+     42     infer_dtype_from_array,
+     43     sanitize_to_nanoseconds,
+     44 )
+     45 from pandas.core.dtypes.common import (
+     46     ensure_float64,
+     47     ensure_object,
+   (...)
+     64     needs_i8_conversion,
+     65 )
+     66 from pandas.core.dtypes.concat import concat_compat
+
+File ~/.local/lib/python3.8/site-packages/pandas/core/dtypes/cast.py:23
+     13 from typing import (
+     14     TYPE_CHECKING,
+     15     Any,
+   (...)
+     19     overload,
+     20 )
+     21 import warnings
+---> 23 from dateutil.parser import ParserError
+     24 import numpy as np
+     26 from pandas._libs import lib
+
+ImportError: cannot import name 'ParserError' from 'dateutil.parser' (/usr/lib/python3/dist-packages/dateutil/parser/__init__.py)
+
+In [2]: exit()
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m pip install requests==2.28.2
+/usr/lib/python3/dist-packages/secretstorage/dhcrypto.py:15: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+/usr/lib/python3/dist-packages/secretstorage/util.py:19: CryptographyDeprecationWarning: int_from_bytes is deprecated, use int.from_bytes instead
+  from cryptography.utils import int_from_bytes
+Requirement already satisfied: requests==2.28.2 in /home/hammie/.local/lib/python3.8/site-packages (2.28.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/hammie/.local/lib/python3.8/site-packages (from requests==2.28.2) (3.1.0)
+Requirement already satisfied: idna<4,>=2.5 in /usr/lib/python3/dist-packages (from requests==2.28.2) (2.8)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/lib/python3/dist-packages (from requests==2.28.2) (2019.11.28)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/lib/python3/dist-packages (from requests==2.28.2) (1.25.8)
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ conda install hail
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - hail
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+==> As at 2023-03-08 19:56GMT (HD), REF "https://gist.github.com/frfahim/73c0fad6350332cef7a653bcd762f08d":
+====
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ which venv
+(tx_annotation) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ conda deactivate
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+[GCC 7.5.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m venv hail
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ source hail/bin/activate
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m pip install hail
+Collecting hail
+  Using cached hail-0.2.109-py3-none-any.whl (142.6 MB)
+Collecting protobuf==3.20.2
+  Downloading protobuf-3.20.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 1.6 MB/s eta 0:00:00
+Collecting asyncinit<0.3,>=0.2.4
+  Using cached asyncinit-0.2.4-py3-none-any.whl (2.8 kB)
+Collecting parsimonious<0.9
+  Using cached parsimonious-0.8.1.tar.gz (45 kB)
+  Preparing metadata (setup.py) ... done
+Collecting rich==12.6.0
+  Using cached rich-12.6.0-py3-none-any.whl (237 kB)
+Collecting dill<0.4,>=0.3.1.1
+  Using cached dill-0.3.6-py3-none-any.whl (110 kB)
+Collecting scipy<1.10,>1.2
+  Downloading scipy-1.9.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (33.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 33.8/33.8 MB 1.8 MB/s eta 0:00:00
+Collecting azure-identity<2,>=1.6.0
+  Using cached azure_identity-1.12.0-py3-none-any.whl (135 kB)
+Collecting nest-asyncio<2,>=1.5.4
+  Using cached nest_asyncio-1.5.6-py3-none-any.whl (5.2 kB)
+Collecting Jinja2==3.0.3
+  Using cached Jinja2-3.0.3-py3-none-any.whl (133 kB)
+Collecting google-cloud-storage>=1.25.*
+  Using cached google_cloud_storage-2.7.0-py2.py3-none-any.whl (110 kB)
+Collecting uvloop<1,>=0.16.0
+  Downloading uvloop-0.17.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 2.2 MB/s eta 0:00:00
+Collecting botocore<2.0,>=1.20
+  Using cached botocore-1.29.86-py3-none-any.whl (10.5 MB)
+Collecting hurry.filesize<1,>=0.9
+  Using cached hurry.filesize-0.9.tar.gz (2.8 kB)
+  Preparing metadata (setup.py) ... done
+Collecting pyspark<3.2.0,>=3.1.1
+  Using cached pyspark-3.1.3.tar.gz (214.0 MB)
+  Preparing metadata (setup.py) ... done
+Collecting tabulate<1,>=0.8.9
+  Using cached tabulate-0.9.0-py3-none-any.whl (35 kB)
+Collecting janus<1.1,>=0.6
+  Using cached janus-1.0.0-py3-none-any.whl (6.9 kB)
+Collecting azure-storage-blob<13,>=12.11.0
+  Using cached azure_storage_blob-12.15.0-py3-none-any.whl (387 kB)
+Collecting pandas<1.6.0,>=1.3.0
+  Downloading pandas-1.5.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.2/12.2 MB 2.3 MB/s eta 0:00:00
+Collecting requests<3,>=2.25.1
+  Using cached requests-2.28.2-py3-none-any.whl (62 kB)
+Collecting google-auth==2.14.1
+  Using cached google_auth-2.14.1-py2.py3-none-any.whl (175 kB)
+Collecting avro<1.12,>=1.10
+  Using cached avro-1.11.1.tar.gz (84 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting decorator<5
+  Using cached decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+Collecting aiohttp<4,>=3.8.1
+  Downloading aiohttp-3.8.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 1.6 MB/s eta 0:00:00
+Collecting orjson<4,>=3.6.4
+  Downloading orjson-3.8.7-cp39-cp39-manylinux_2_28_x86_64.whl (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.9/140.9 KB 20.8 MB/s eta 0:00:00
+Collecting Deprecated<1.3,>=1.2.10
+  Using cached Deprecated-1.2.13-py2.py3-none-any.whl (9.6 kB)
+Collecting bokeh==1.4.0
+  Using cached bokeh-1.4.0.tar.gz (32.4 MB)
+  Preparing metadata (setup.py) ... done
+Collecting frozenlist<2,>=1.3.1
+  Downloading frozenlist-1.3.3-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (158 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 158.8/158.8 KB 1.5 MB/s eta 0:00:00
+Collecting sortedcontainers<3,>=2.4.0
+  Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Collecting PyJWT
+  Downloading PyJWT-2.6.0-py3-none-any.whl (20 kB)
+Collecting python-json-logger<3,>=2.0.2
+  Using cached python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
+Collecting plotly<5.11,>=5.5.0
+  Using cached plotly-5.10.0-py2.py3-none-any.whl (15.2 MB)
+Collecting aiohttp-session<2.13,>=2.7
+  Using cached aiohttp_session-2.12.0-py3-none-any.whl (12 kB)
+Collecting boto3<2.0,>=1.17
+  Using cached boto3-1.26.86-py3-none-any.whl (134 kB)
+Collecting humanize<2,>=1.0.0
+  Using cached humanize-1.1.0-py3-none-any.whl (52 kB)
+Collecting numpy<2
+  Downloading numpy-1.24.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.3/17.3 MB 2.0 MB/s eta 0:00:00
+Collecting six>=1.5.2
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting PyYAML>=3.10
+  Downloading PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (661 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 661.8/661.8 KB 2.4 MB/s eta 0:00:00
+Collecting python-dateutil>=2.1
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 KB 1.5 MB/s eta 0:00:00
+Collecting pillow>=4.0
+  Downloading Pillow-9.4.0-cp39-cp39-manylinux_2_28_x86_64.whl (3.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 1.8 MB/s eta 0:00:00
+Collecting packaging>=16.8
+  Using cached packaging-23.0-py3-none-any.whl (42 kB)
+Collecting tornado>=4.3
+  Using cached tornado-6.2-cp37-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (423 kB)
+Collecting pyasn1-modules>=0.2.1
+  Using cached pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+Collecting rsa<5,>=3.1.4
+  Using cached rsa-4.9-py3-none-any.whl (34 kB)
+Collecting cachetools<6.0,>=2.0.0
+  Using cached cachetools-5.3.0-py3-none-any.whl (9.3 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting commonmark<0.10.0,>=0.9.0
+  Using cached commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+Collecting pygments<3.0.0,>=2.6.0
+  Using cached Pygments-2.14.0-py3-none-any.whl (1.1 MB)
+Collecting attrs>=17.3.0
+  Using cached attrs-22.2.0-py3-none-any.whl (60 kB)
+Collecting aiosignal>=1.1.2
+  Using cached aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
+Collecting yarl<2.0,>=1.0
+  Downloading yarl-1.8.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (264 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 264.6/264.6 KB 1.4 MB/s eta 0:00:00
+Collecting async-timeout<5.0,>=4.0.0a3
+  Using cached async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
+Collecting charset-normalizer<4.0,>=2.0
+  Downloading charset_normalizer-3.1.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (199 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.2/199.2 KB 1.4 MB/s eta 0:00:00
+Collecting multidict<7.0,>=4.5
+  Downloading multidict-6.0.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (114 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.2/114.2 KB 1.4 MB/s eta 0:00:00
+Collecting msal-extensions<2.0.0,>=0.3.0
+  Using cached msal_extensions-1.0.0-py2.py3-none-any.whl (19 kB)
+Collecting azure-core<2.0.0,>=1.11.0
+  Using cached azure_core-1.26.3-py3-none-any.whl (174 kB)
+Collecting msal<2.0.0,>=1.12.0
+  Using cached msal-1.21.0-py2.py3-none-any.whl (89 kB)
+Collecting cryptography>=2.5
+  Downloading cryptography-39.0.2-cp36-abi3-manylinux_2_28_x86_64.whl (4.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 1.6 MB/s eta 0:00:00
+Collecting typing-extensions>=4.0.1
+  Using cached typing_extensions-4.5.0-py3-none-any.whl (27 kB)
+Collecting isodate>=0.6.1
+  Using cached isodate-0.6.1-py2.py3-none-any.whl (41 kB)
+Collecting jmespath<2.0.0,>=0.7.1
+  Using cached jmespath-1.0.1-py3-none-any.whl (20 kB)
+Collecting s3transfer<0.7.0,>=0.6.0
+  Using cached s3transfer-0.6.0-py3-none-any.whl (79 kB)
+Collecting urllib3<1.27,>=1.25.4
+  Downloading urllib3-1.26.14-py2.py3-none-any.whl (140 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.6/140.6 KB 1.5 MB/s eta 0:00:00
+Collecting wrapt<2,>=1.10
+  Downloading wrapt-1.15.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (78 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.3/78.3 KB 2.5 MB/s eta 0:00:00
+Collecting google-cloud-core<3.0dev,>=2.3.0
+  Using cached google_cloud_core-2.3.2-py2.py3-none-any.whl (29 kB)
+Collecting google-resumable-media>=2.3.2
+  Using cached google_resumable_media-2.4.1-py2.py3-none-any.whl (77 kB)
+Collecting google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0dev,>=1.31.5
+  Using cached google_api_core-2.11.0-py3-none-any.whl (120 kB)
+Requirement already satisfied: setuptools in ./hail/lib/python3.9/site-packages (from hurry.filesize<1,>=0.9->hail) (58.1.0)
+Collecting pytz>=2020.1
+  Using cached pytz-2022.7.1-py2.py3-none-any.whl (499 kB)
+Collecting tenacity>=6.2.0
+  Using cached tenacity-8.2.2-py3-none-any.whl (24 kB)
+Collecting py4j==0.10.9
+  Using cached py4j-0.10.9-py2.py3-none-any.whl (198 kB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.4-py3-none-any.whl (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 KB 1.3 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2022.12.7-py3-none-any.whl (155 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.3/155.3 KB 1.8 MB/s eta 0:00:00
+Collecting cffi>=1.12
+  Downloading cffi-1.15.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (441 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 441.2/441.2 KB 1.6 MB/s eta 0:00:00
+Collecting googleapis-common-protos<2.0dev,>=1.56.2
+  Using cached googleapis_common_protos-1.58.0-py2.py3-none-any.whl (223 kB)
+Collecting google-crc32c<2.0dev,>=1.0
+  Downloading google_crc32c-1.5.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (32 kB)
+Collecting portalocker<3,>=1.0
+  Using cached portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+Collecting pyasn1<0.5.0,>=0.4.6
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting pycparser
+  Using cached pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Using legacy 'setup.py install' for bokeh, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for hurry.filesize, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for parsimonious, since package 'wheel' is not installed.
+Using legacy 'setup.py install' for pyspark, since package 'wheel' is not installed.
+Building wheels for collected packages: avro
+  Building wheel for avro (pyproject.toml) ... done
+  Created wheel for avro: filename=avro-1.11.1-py2.py3-none-any.whl size=116717 sha256=75b5ada66a1ec051010822772938473d3a6d3f4a6b75373d0acd7471882079e7
+  Stored in directory: /home/hammie/.cache/pip/wheels/19/04/da/9145173b774d05a913188fcbaeab75c8595a7fa707f90f7917
+Successfully built avro
+Installing collected packages: sortedcontainers, pytz, pyasn1, py4j, commonmark, wrapt, uvloop, urllib3, typing-extensions, tornado, tenacity, tabulate, six, rsa, PyYAML, python-json-logger, pyspark, PyJWT, pygments, pycparser, pyasn1-modules, protobuf, portalocker, pillow, packaging, orjson, numpy, nest-asyncio, multidict, MarkupSafe, jmespath, idna, hurry.filesize, humanize, google-crc32c, frozenlist, dill, decorator, charset-normalizer, certifi, cachetools, avro, attrs, asyncinit, async-timeout, yarl, scipy, rich, requests, python-dateutil, plotly, parsimonious, Jinja2, janus, isodate, googleapis-common-protos, google-resumable-media, google-auth, Deprecated, cffi, aiosignal, pandas, google-api-core, cryptography, botocore, bokeh, azure-core, aiohttp, s3transfer, google-cloud-core, azure-storage-blob, aiohttp-session, msal, google-cloud-storage, boto3, msal-extensions, azure-identity, hail
+  Running setup.py install for pyspark ... done
+  Running setup.py install for hurry.filesize ... done
+  Running setup.py install for parsimonious ... done
+  Running setup.py install for bokeh ... done
+Successfully installed Deprecated-1.2.13 Jinja2-3.0.3 MarkupSafe-2.1.2 PyJWT-2.6.0 PyYAML-6.0 aiohttp-3.8.4 aiohttp-session-2.12.0 aiosignal-1.3.1 async-timeout-4.0.2 asyncinit-0.2.4 attrs-22.2.0 avro-1.11.1 azure-core-1.26.3 azure-identity-1.12.0 azure-storage-blob-12.15.0 bokeh-1.4.0 boto3-1.26.86 botocore-1.29.86 cachetools-5.3.0 certifi-2022.12.7 cffi-1.15.1 charset-normalizer-3.1.0 commonmark-0.9.1 cryptography-39.0.2 decorator-4.4.2 dill-0.3.6 frozenlist-1.3.3 google-api-core-2.11.0 google-auth-2.14.1 google-cloud-core-2.3.2 google-cloud-storage-2.7.0 google-crc32c-1.5.0 google-resumable-media-2.4.1 googleapis-common-protos-1.58.0 hail-0.2.109 humanize-1.1.0 hurry.filesize-0.9 idna-3.4 isodate-0.6.1 janus-1.0.0 jmespath-1.0.1 msal-1.21.0 msal-extensions-1.0.0 multidict-6.0.4 nest-asyncio-1.5.6 numpy-1.24.2 orjson-3.8.7 packaging-23.0 pandas-1.5.3 parsimonious-0.8.1 pillow-9.4.0 plotly-5.10.0 portalocker-2.7.0 protobuf-3.20.2 py4j-0.10.9 pyasn1-0.4.8 pyasn1-modules-0.2.8 pycparser-2.21 pygments-2.14.0 pyspark-3.1.3 python-dateutil-2.8.2 python-json-logger-2.0.7 pytz-2022.7.1 requests-2.28.2 rich-12.6.0 rsa-4.9 s3transfer-0.6.0 scipy-1.9.3 six-1.16.0 sortedcontainers-2.4.0 tabulate-0.9.0 tenacity-8.2.2 tornado-6.2 typing-extensions-4.5.0 urllib3-1.26.14 uvloop-0.17.0 wrapt-1.15.0 yarl-1.8.2
+WARNING: You are using pip version 22.0.4; however, version 23.0.1 is available.
+You should consider upgrading via the '/home/hammie/PROJECTS/UKBiobank/tx_annotation/hail/bin/python3 -m pip install --upgrade pip' command.
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-08 20:10GMT (HD), REF "https://howchoo.com/python/how-to-make-ipython-work-in-a-virtualenv-virtual-environment#install-ipython-inside-of-your-virtual-environment":
+====
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ipython
+/home/hammie/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py:841: UserWarning: Attempting to work in a virtualenv. If you encounter problems, please install IPython inside the virtualenv.
+  warn(
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ python3 -m pip install ipython
+Collecting ipython
+  Using cached ipython-8.11.0-py3-none-any.whl (793 kB)
+Collecting pexpect>4.3
+  Downloading pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.0/59.0 KB 616.8 kB/s eta 0:00:00
+Collecting jedi>=0.16
+  Using cached jedi-0.18.2-py2.py3-none-any.whl (1.6 MB)
+Requirement already satisfied: decorator in ./hail/lib/python3.9/site-packages (from ipython) (4.4.2)
+Requirement already satisfied: pygments>=2.4.0 in ./hail/lib/python3.9/site-packages (from ipython) (2.14.0)
+Collecting pickleshare
+  Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting traitlets>=5
+  Using cached traitlets-5.9.0-py3-none-any.whl (117 kB)
+Collecting prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30
+  Using cached prompt_toolkit-3.0.38-py3-none-any.whl (385 kB)
+Collecting matplotlib-inline
+  Using cached matplotlib_inline-0.1.6-py3-none-any.whl (9.4 kB)
+Collecting stack-data
+  Using cached stack_data-0.6.2-py3-none-any.whl (24 kB)
+Collecting backcall
+  Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting parso<0.9.0,>=0.8.0
+  Using cached parso-0.8.3-py2.py3-none-any.whl (100 kB)
+Collecting ptyprocess>=0.5
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.6-py2.py3-none-any.whl (29 kB)
+Collecting executing>=1.2.0
+  Using cached executing-1.2.0-py2.py3-none-any.whl (24 kB)
+Collecting asttokens>=2.1.0
+  Using cached asttokens-2.2.1-py2.py3-none-any.whl (26 kB)
+Collecting pure-eval
+  Using cached pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Requirement already satisfied: six in ./hail/lib/python3.9/site-packages (from asttokens>=2.1.0->stack-data->ipython) (1.16.0)
+Installing collected packages: wcwidth, pure-eval, ptyprocess, pickleshare, executing, backcall, traitlets, prompt-toolkit, pexpect, parso, asttokens, stack-data, matplotlib-inline, jedi, ipython
+Successfully installed asttokens-2.2.1 backcall-0.2.0 executing-1.2.0 ipython-8.11.0 jedi-0.18.2 matplotlib-inline-0.1.6 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 prompt-toolkit-3.0.38 ptyprocess-0.7.0 pure-eval-0.2.2 stack-data-0.6.2 traitlets-5.9.0 wcwidth-0.2.6
+WARNING: You are using pip version 22.0.4; however, version 23.0.1 is available.
+You should consider upgrading via the '/home/hammie/PROJECTS/UKBiobank/tx_annotation/hail/bin/python3 -m pip install --upgrade pip' command.
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ipython
+/home/hammie/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py:841: UserWarning: Attempting to work in a virtualenv. If you encounter problems, please install IPython inside the virtualenv.
+  warn(
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: exit()
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pip install ipython
+Requirement already satisfied: ipython in ./hail/lib/python3.9/site-packages (8.11.0)
+Requirement already satisfied: decorator in ./hail/lib/python3.9/site-packages (from ipython) (4.4.2)
+Requirement already satisfied: matplotlib-inline in ./hail/lib/python3.9/site-packages (from ipython) (0.1.6)
+Requirement already satisfied: jedi>=0.16 in ./hail/lib/python3.9/site-packages (from ipython) (0.18.2)
+Requirement already satisfied: stack-data in ./hail/lib/python3.9/site-packages (from ipython) (0.6.2)
+Requirement already satisfied: pickleshare in ./hail/lib/python3.9/site-packages (from ipython) (0.7.5)
+Requirement already satisfied: traitlets>=5 in ./hail/lib/python3.9/site-packages (from ipython) (5.9.0)
+Requirement already satisfied: backcall in ./hail/lib/python3.9/site-packages (from ipython) (0.2.0)
+Requirement already satisfied: pygments>=2.4.0 in ./hail/lib/python3.9/site-packages (from ipython) (2.14.0)
+Requirement already satisfied: pexpect>4.3 in ./hail/lib/python3.9/site-packages (from ipython) (4.8.0)
+Requirement already satisfied: prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30 in ./hail/lib/python3.9/site-packages (from ipython) (3.0.38)
+Requirement already satisfied: parso<0.9.0,>=0.8.0 in ./hail/lib/python3.9/site-packages (from jedi>=0.16->ipython) (0.8.3)
+Requirement already satisfied: ptyprocess>=0.5 in ./hail/lib/python3.9/site-packages (from pexpect>4.3->ipython) (0.7.0)
+Requirement already satisfied: wcwidth in ./hail/lib/python3.9/site-packages (from prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30->ipython) (0.2.6)
+Requirement already satisfied: executing>=1.2.0 in ./hail/lib/python3.9/site-packages (from stack-data->ipython) (1.2.0)
+Requirement already satisfied: pure-eval in ./hail/lib/python3.9/site-packages (from stack-data->ipython) (0.2.2)
+Requirement already satisfied: asttokens>=2.1.0 in ./hail/lib/python3.9/site-packages (from stack-data->ipython) (2.2.1)
+Requirement already satisfied: six in ./hail/lib/python3.9/site-packages (from asttokens>=2.1.0->stack-data->ipython) (1.16.0)
+WARNING: You are using pip version 22.0.4; however, version 23.0.1 is available.
+You should consider upgrading via the '/home/hammie/PROJECTS/UKBiobank/tx_annotation/hail/bin/python3 -m pip install --upgrade pip' command.
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ipython
+/home/hammie/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py:841: UserWarning: Attempting to work in a virtualenv. If you encounter problems, please install IPython inside the virtualenv.
+  warn(
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.2.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: exit()
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ hash -r
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ipython
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.11.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import hail as hl
+
+In [2]: mt = hl.balding_nichols_model(n_populations=3,
+   ...:                               n_samples=10,
+   ...:                               n_variants=100)
+Initializing Hail with default parameters...
+2023-03-08 20:07:22.662 WARN  Utils:69 - Your hostname, hammie-Default-string resolves to a loopback address: 127.0.1.1; using 192.168.77.142 instead (on interface wlp3s0)
+2023-03-08 20:07:22.665 WARN  Utils:69 - Set SPARK_LOCAL_IP if you need to bind to another address
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/home/hammie/PROJECTS/UKBiobank/tx_annotation/hail/lib/python3.9/site-packages/pyspark/jars/spark-unsafe_2.12-3.1.3.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2023-03-08 20:07:22.936 WARN  NativeCodeLoader:60 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Running on Apache Spark version 3.1.3
+SparkUI available at http://192.168.77.142:4040
+Welcome to
+     __  __     <>__
+    / /_/ /__  __/ /
+   / __  / _ `/ / /
+  /_/ /_/\_,_/_/_/   version 0.2.109-b71b065e4bb6
+LOGGING: writing to /home/hammie/PROJECTS/UKBiobank/tx_annotation/hail-20230308-2007-0.2.109-b71b065e4bb6.log
+2023-03-08 20:07:25.329 Hail: INFO: balding_nichols_model: generating genotypes for 3 populations, 10 samples, and 100 variants...
+
+In [3]: mt.show()
+2023-03-08 20:08:02.400 Hail: INFO: Coerced sorted dataset
++---------------+------------+------+------+------+------+------+------+------+------+------+------+
+| locus         | alleles    | 0.GT | 1.GT | 2.GT | 3.GT | 4.GT | 5.GT | 6.GT | 7.GT | 8.GT | 9.GT |
++---------------+------------+------+------+------+------+------+------+------+------+------+------+
+| locus<GRCh37> | array<str> | call | call | call | call | call | call | call | call | call | call |
++---------------+------------+------+------+------+------+------+------+------+------+------+------+
+| 1:1           | ["A","C"]  | 0/0  | 1/1  | 1/1  | 0/1  | 0/0  | 0/0  | 0/0  | 1/1  | 0/0  | 0/0  |
+| 1:2           | ["A","C"]  | 0/0  | 1/1  | 0/1  | 0/1  | 1/1  | 1/1  | 1/1  | 0/1  | 0/1  | 0/1  |
+| 1:3           | ["A","C"]  | 0/0  | 0/1  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/1  |
+| 1:4           | ["A","C"]  | 0/1  | 0/1  | 0/1  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  | 1/1  | 0/1  |
+| 1:5           | ["A","C"]  | 0/1  | 0/1  | 0/1  | 0/0  | 0/1  | 1/1  | 0/1  | 0/1  | 1/1  | 1/1  |
+| 1:6           | ["A","C"]  | 1/1  | 0/1  | 0/0  | 0/1  | 1/1  | 0/1  | 0/1  | 1/1  | 0/1  | 0/1  |
+| 1:7           | ["A","C"]  | 1/1  | 0/1  | 1/1  | 0/0  | 0/0  | 0/1  | 0/1  | 0/1  | 1/1  | 1/1  |
+| 1:8           | ["A","C"]  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  |
+| 1:9           | ["A","C"]  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/1  | 0/0  |
+| 1:10          | ["A","C"]  | 1/1  | 0/0  | 0/0  | 0/0  | 0/1  | 1/1  | 0/1  | 0/0  | 0/1  | 0/1  |
+| 1:11          | ["A","C"]  | 1/1  | 0/0  | 0/0  | 1/1  | 0/1  | 1/1  | 0/1  | 0/1  | 1/1  | 0/1  |
+| 1:12          | ["A","C"]  | 1/1  | 0/1  | 0/1  | 0/0  | 0/1  | 1/1  | 1/1  | 1/1  | 1/1  | 0/1  |
+| 1:13          | ["A","C"]  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/1  | 0/0  | 0/0  | 0/0  | 0/1  |
+| 1:14          | ["A","C"]  | 1/1  | 1/1  | 1/1  | 1/1  | 0/1  | 0/1  | 1/1  | 1/1  | 1/1  | 1/1  |
+| 1:15          | ["A","C"]  | 0/0  | 0/1  | 0/1  | 0/1  | 0/0  | 0/0  | 0/0  | 0/1  | 0/0  | 0/0  |
+| 1:16          | ["A","C"]  | 1/1  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  |
+| 1:17          | ["A","C"]  | 1/1  | 1/1  | 0/1  | 0/1  | 1/1  | 1/1  | 1/1  | 1/1  | 1/1  | 1/1  |
+| 1:18          | ["A","C"]  | 0/1  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  |
+| 1:19          | ["A","C"]  | 0/1  | 0/0  | 0/0  | 0/0  | 1/1  | 1/1  | 1/1  | 0/0  | 1/1  | 0/1  |
+| 1:20          | ["A","C"]  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  |
+| 1:21          | ["A","C"]  | 0/0  | 0/0  | 0/0  | 1/1  | 0/0  | 0/0  | 0/1  | 0/1  | 0/0  | 0/0  |
+| 1:22          | ["A","C"]  | 0/1  | 0/1  | 1/1  | 0/0  | 0/1  | 0/0  | 0/1  | 0/1  | 0/0  | 0/1  |
+| 1:23          | ["A","C"]  | 0/0  | 0/1  | 0/0  | 1/1  | 0/1  | 1/1  | 0/1  | 0/1  | 0/1  | 0/0  |
+| 1:24          | ["A","C"]  | 0/0  | 0/1  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  | 0/0  | 0/1  | 0/1  |
+| 1:25          | ["A","C"]  | 0/1  | 0/0  | 0/0  | 0/1  | 0/0  | 0/0  | 0/1  | 0/0  | 0/1  | 0/0  |
+| 1:26          | ["A","C"]  | 0/0  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  | 1/1  | 0/1  | 0/0  | 0/1  |
+| 1:27          | ["A","C"]  | 1/1  | 1/1  | 1/1  | 1/1  | 0/1  | 1/1  | 0/1  | 1/1  | 1/1  | 0/1  |
+| 1:28          | ["A","C"]  | 0/1  | 1/1  | 1/1  | 1/1  | 0/1  | 0/0  | 0/1  | 1/1  | 0/1  | 1/1  |
+| 1:29          | ["A","C"]  | 0/1  | 0/1  | 1/1  | 1/1  | 0/0  | 0/1  | 0/0  | 1/1  | 0/0  | 0/0  |
+| 1:30          | ["A","C"]  | 0/0  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/0  | 0/0  | 0/0  | 0/0  |
+| 1:31          | ["A","C"]  | 1/1  | 0/0  | 1/1  | 0/1  | 1/1  | 1/1  | 1/1  | 1/1  | 0/1  | 1/1  |
+| 1:32          | ["A","C"]  | 0/1  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  |
+| 1:33          | ["A","C"]  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  | 1/1  | 0/1  | 1/1  | 1/1  | 1/1  |
+| 1:34          | ["A","C"]  | 1/1  | 1/1  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  |
+| 1:35          | ["A","C"]  | 0/1  | 0/0  | 0/1  | 0/1  | 0/0  | 0/0  | 0/0  | 0/0  | 0/1  | 0/0  |
+| 1:36          | ["A","C"]  | 0/1  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  | 0/1  | 0/0  | 0/1  | 0/0  |
+| 1:37          | ["A","C"]  | 0/1  | 0/1  | 1/1  | 0/1  | 0/0  | 1/1  | 0/0  | 0/0  | 0/1  | 0/1  |
+| 1:38          | ["A","C"]  | 0/1  | 0/1  | 0/1  | 0/0  | 0/1  | 0/1  | 1/1  | 0/1  | 0/0  | 1/1  |
+| 1:39          | ["A","C"]  | 1/1  | 1/1  | 1/1  | 0/1  | 0/0  | 1/1  | 0/0  | 0/1  | 0/0  | 0/0  |
++---------------+------------+------+------+------+------+------+------+------+------+------+------+
+showing top 39 rows
+
+In [4]: exit()
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-10 15:24GMT (HD), as per "https://cloud.google.com/sdk/docs/install#deb":
+--
+====
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ sudo apt-get install apt-transport-https ca-certificates gnupg
+[sudo] password for hammie: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+ca-certificates is already the newest version (20211016ubuntu0.20.04.1).
+ca-certificates set to manually installed.
+gnupg is already the newest version (2.2.19-3ubuntu2.2).
+gnupg set to manually installed.
+apt-transport-https is already the newest version (2.0.9).
+The following packages were automatically installed and are no longer required:
+  coinor-libcbc3 coinor-libcgl1 coinor-libclp1 coinor-libcoinmp1v5 coinor-libcoinutils3v5 coinor-libosi1v5 libcmis-0.5-5v5
+  libfwupdplugin1 libgpgmepp6 ubuntu-advantage-desktop-daemon zenpower
+Use 'sudo apt autoremove' to remove them.
+0 to upgrade, 0 to newly install, 0 to remove and 71 not to upgrade.
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ less -S /etc/apt/sources.list.d/google-cloud-sdk.list
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1210  100  1210    0     0   4009      0 --:--:-- --:--:-- --:--:--  4019
+OK
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ sudo apt-get update && sudo apt-get install google-cloud-cli
+Hit:1 http://ppa.launchpad.net/junocomp/juno-apps/ubuntu focal InRelease
+Hit:2 http://gb.archive.ubuntu.com/ubuntu focal InRelease                                                                              
+Get:3 http://gb.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]                                                             
+Hit:4 http://ppa.launchpad.net/libreoffice/ppa/ubuntu focal InRelease                                                                  
+Get:6 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]                                                              
+Hit:7 https://dl.google.com/linux/chrome/deb stable InRelease                                                                        
+Hit:8 https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/ InRelease                                                             
+Get:9 http://gb.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]                                                     
+Get:10 http://gb.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [274 kB]                                           
+Get:11 https://packages.cloud.google.com/apt cloud-sdk InRelease [6,361 B]                                                             
+Get:12 http://gb.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [409 kB]                                       
+Get:13 http://gb.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [940 B]                    
+Get:14 http://gb.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,984 B]                      
+Get:15 http://gb.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]                                    
+Get:16 https://packages.cloud.google.com/apt cloud-sdk/main i386 Packages [265 kB]                                                     
+Get:17 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [59.9 kB]                  
+Hit:5 https://repo-r3lab.uni.lu/debian stable InRelease                                                                           
+Get:18 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [94.7 kB]
+Get:19 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
+Get:20 https://packages.cloud.google.com/apt cloud-sdk/main amd64 Packages [404 kB]
+Fetched 1,890 kB in 2s (1,181 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  coinor-libcbc3 coinor-libcgl1 coinor-libclp1 coinor-libcoinmp1v5 coinor-libcoinutils3v5 coinor-libosi1v5 libcmis-0.5-5v5
+  libfwupdplugin1 libgpgmepp6 ubuntu-advantage-desktop-daemon zenpower
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  google-cloud-cli-app-engine-java google-cloud-cli-app-engine-python google-cloud-cli-pubsub-emulator
+  google-cloud-cli-bigtable-emulator google-cloud-cli-datastore-emulator kubectl
+The following NEW packages will be installed
+  google-cloud-cli
+0 to upgrade, 1 to newly install, 0 to remove and 71 not to upgrade.
+Need to get 157 MB of archives.
+After this operation, 818 MB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt cloud-sdk/main amd64 google-cloud-cli all 421.0.0-0 [157 MB]
+Fetched 157 MB in 1min 13s (2,161 kB/s)                                                                                                
+Selecting previously unselected package google-cloud-cli.
+(Reading database ... 245055 files and directories currently installed.)
+Preparing to unpack .../google-cloud-cli_421.0.0-0_all.deb ...
+Unpacking google-cloud-cli (421.0.0-0) ...
+Setting up google-cloud-cli (421.0.0-0) ...
+Processing triggers for man-db (2.9.1-1) ...
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ gcloud init
+Welcome! This command will take you through the configuration of gcloud.
+
+Your current configuration has been set to: [default]
+
+You can skip diagnostics next time by using the following flag:
+  gcloud init --skip-diagnostics
+
+Network diagnostic detects and fixes local network connection issues.
+Checking network connection...done.                                                                                                    
+Reachability Check passed.
+Network diagnostic passed (1/1 checks passed).
+
+You must log in to continue. Would you like to log in (Y/n)?  Y
+
+Your browser has been opened to visit:
+
+    https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=32555940559.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fappengine.admin+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fsqlservice.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcompute+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Faccounts.reauth&state=eIL9w8KTfFQyQQAXhwMbaMBXZFXrRM&access_type=offline&code_challenge=FzltPqzAluzmUAiKQ75UDtyjlFJ_sM5xjglYi5uVAdY&code_challenge_method=S256
+
+You are logged in as: [h.h.m.draisma@gmail.com].
+
+Pick cloud project to use: 
+ [1] bustling-sunset-177609
+ [2] Enter a project ID
+ [3] Create a new project
+Please enter numeric choice or text value (must exactly match list item):  3
+
+Enter a Project ID. Note that a Project ID CANNOT be changed later.
+Project IDs must be 6-30 characters (lowercase ASCII, digits, or
+hyphens) in length and start with a lowercase letter. gsutilquickstart
+Waiting for [operations/cp.4684272826540012314] to finish...done.                                                                      
+Your current project has been set to: [gsutilquickstart].
+
+Not setting default zone/region (this feature makes it easier to use
+[gcloud compute] by setting an appropriate default value for the
+--zone and --region flag).
+See https://cloud.google.com/compute/docs/gcloud-compute section on how to set
+default compute region and zone manually. If you would like [gcloud init] to be
+able to do this for you the next time you run it, make sure the
+Compute Engine API is enabled for your project on the
+https://console.developers.google.com/apis page.
+
+Created a default .boto configuration file at [/home/hammie/.boto]. See this file and
+[https://cloud.google.com/storage/docs/gsutil/commands/config] for more
+information about configuring Google Cloud Storage.
+Your Google Cloud SDK is configured and ready to use!
+
+* Commands that require authentication will use h.h.m.draisma@gmail.com by default
+* Commands will reference project `gsutilquickstart` by default
+Run `gcloud help config` to learn how to change individual settings
+
+This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
+Run `gcloud topic configurations` to learn more.
+
+Some things to try next:
+
+* Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
+* Run `gcloud topic --help` to learn about advanced features of the SDK like arg files and output formatting
+* Run `gcloud cheat-sheet` to see a roster of go-to `gcloud` commands.
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-10 16:20GMT (HD):
+--
+====
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ gsutil cp gs://gnomad-public/README.txt .
+Copying gs://gnomad-public/README.txt...
+- [1 files][   78.0 B/   78.0 B]                                                
+Operation completed over 1 objects/78.0 B.                                       
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ mv ./README.txt ./README.txt_gs_gnomad-public
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ gsutil cp gs://gcp-public-data--gnomad/release/2.1.1/README.txt .
+Copying gs://gcp-public-data--gnomad/release/2.1.1/README.txt...
+- [1 files][  1.6 KiB/  1.6 KiB]                                                
+Operation completed over 1 objects/1.6 KiB.                                      
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ cat ./README.txt
+gnomAD release 2.1.1 contains a number of minor corrections, changes, and additions to the 2.1 data release. The major annotations, including allele count, allele number, and allele frequency, as well as variant filtering status, remain unchanged for the entire callset and for all subsets of the callset.
+
+We corrected:
+1. Filtering allele frequency (FAF) annotations: for any variant that occurs as a singleton in a population, the population-specific FAF should be 0. We have amended all FAF annotations accordingly.
+2. VCF header formatting: we corrected histogram bin edges that were rounded incorrectly and annotations with the wrong Number encoding. We also added the overall background age distribution of release samples as a histogram annotation in the header.
+3. The constraint files now correspond exactly to the filtering shown in the release files and browser (previously a small number of filtered variants were erroneously included). Additionally, they are now updated to the latest LOFTEE annotations (see below).
+
+We changed:
+1. Version 1.0 of LOFTEE is now used for variant annotation, which includes an improved END_TRUNC annotation and retires some filters. Predicted splice variants outside of the essential splice site are now given the OS (other splice) designation. Only HC variants are used to compute pLoF constraint metrics, including LOEUF.
+
+We added:
+1. Consanguineous allele frequencies: AFs for consanguineous individuals in certain subpopulations are now available in the 2.1.1 release Hail Table
+2. A genome release VCF containing only variants in exome calling regions (by popular demand)
+
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pwd
+/home/hammie/PROJECTS/UKBiobank/tx_annotation
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-24 17:12GMT (HD):
+--
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ ls -laht
+total 1.5M
+drwxrwxr-x 5 hammie hammie 4.0K Mar 24 15:17 ..
+drwxrwxr-x 2 hammie hammie 4.0K Mar 10 17:17 __pycache__
+drwxrwxr-x 7 hammie hammie 4.0K Mar 10 17:09 hail
+drwxrwxr-x 6 hammie hammie 4.0K Mar 10 16:36 .
+-rw-rw-r-- 1 hammie hammie  78K Mar 10 16:36 README_HD
+-rw-rw-r-- 1 hammie hammie 1.6K Mar 10 16:33 README.txt
+-rw-rw-r-- 1 hammie hammie   78 Mar 10 16:19 README.txt_gs_gnomad-public
+-rw-rw-r-- 1 hammie hammie 1.3M Mar  8 20:09 hail-20230308-2007-0.2.109-b71b065e4bb6.log
+drwxrwxr-x 8 hammie hammie 4.0K Mar  8 17:56 analyses
+drwxrwxr-x 8 hammie hammie 4.0K Mar  8 17:56 .git
+-rw-rw-r-- 1 hammie hammie   95 Mar  8 17:56 __init__.py
+-rw-rw-r-- 1 hammie hammie 1.6K Mar  8 17:56 LICENSE
+-rw-rw-r-- 1 hammie hammie  22K Mar  8 17:56 README.md
+-rw-rw-r-- 1 hammie hammie  16K Mar  8 17:56 tx_annotation.py
+-rw-rw-r-- 1 hammie hammie  13K Mar  8 17:56 tx_annotation_resources.py
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ cp ./tx_annotation_resources.py ./tx_annotation_resources.py.bak 
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pwd
+/home/hammie/PROJECTS/UKBiobank/tx_annotation
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-03-24 19:18GMT (HD), REF "https://github.com/macarthur-lab/tx_annotation#applying-transcript-expression-aware-annotation-to-your-own-dataset":
+--
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ source hail/bin/activate
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ cd -
+/home/hammie/PROJECTS/UKBiobank
+(hail) (base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank$ ipython
+Python 3.9.12 (main, Apr  5 2022, 06:56:58) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.11.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from tx_annotation import *
+2023-03-24 17:26:46.114 WARN  Utils:69 - Your hostname, hammie-Default-string resolves to a loopback address: 127.0.1.1; using 10.0.0.7 instead (on interface wlp3s0)
+2023-03-24 17:26:46.116 WARN  Utils:69 - Set SPARK_LOCAL_IP if you need to bind to another address
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/home/hammie/PROJECTS/UKBiobank/tx_annotation/hail/lib/python3.9/site-packages/pyspark/jars/spark-unsafe_2.12-3.1.3.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2023-03-24 17:26:46.351 WARN  NativeCodeLoader:60 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Running on Apache Spark version 3.1.3
+SparkUI available at http://10.0.0.7:4040
+Welcome to
+     __  __     <>__
+    / /_/ /__  __/ /
+   / __  / _ `/ / /
+  /_/ /_/\_,_/_/_/   version 0.2.109-b71b065e4bb6
+LOGGING: writing to /home/hammie/PROJECTS/UKBiobank/hail-20230324-1726-0.2.109-b71b065e4bb6.log
+
+In [2]: [...]
+In [7]: rt = hl.import_table("/home/hammie/DATA/gnomAD/gnomad.genomes.r2.1.1.sites.22_vcf.txt")
+2023-03-24 19:15:19.745 Hail: INFO: wrote table with 10639 rows in 1 partition to /tmp/persist_tableO5MjSy7NSV
+2023-03-24 19:15:20.108 Hail: INFO: Reading table without type imputation
+  Loading field 'CHROM' as type str (not specified)
+  Loading field 'POS' as type str (not specified)
+  Loading field 'ID' as type str (not specified)
+  Loading field 'REF' as type str (not specified)
+  Loading field 'ALT' as type str (not specified)
+  Loading field 'QUAL' as type str (not specified)
+  Loading field 'FILTER' as type str (not specified)
+  Loading field 'INFO' as type str (not specified)
+
+In [8]: rt = rt.annotate(variant=rt.CHROM + ':' + rt.POS + ":" + rt.REF + ":" + rt.ALT)
+
+In [9]: rt = rt.annotate(** hl.parse_variant(rt.variant))
+
+In [10]: rt = rt.key_by(rt.locus, rt.alleles)
+
+In [11]: mt = hl.MatrixTable.from_rows_table(rt)
+
+In [12]: mt = mt.repartition(1500)
+====
+
+
+As at 2023-04-07 23:59GMT (HD):
+--
+Because we did this 'rt = hl.import_table("/home/hammie/DATA/gnomAD/gnomad.genomes.r2.1.1.sites.22_vcf.txt")' [see log dd "2023-03-24 19:18GMT (HD)" above]:
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ mkdir -p ./results/gnomadGenomesR211sites22_vcf_txt
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ pwd
+/home/hammie/PROJECTS/UKBiobank/tx_annotation
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+As at 2023-04-13 15:59GMT (HD):
+--
+====
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ rm ./README_HD   #After having moved its contents to "../README_HD" -- HD as at 2023-04-13 16:00GMT.
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$ git stash apply
+[...]
+	new file:   hail/share/man/man1/ipython.1
+	new file:   hail/share/py4j/py4j0.10.9.jar
+	new file:   tx_annotation_resources.py.bak
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tx_annotation_resources.py
+
+(base) hammie@hammie-Default-string:~/PROJECTS/UKBiobank/tx_annotation$
+====
+
+
+#END OF FILE.

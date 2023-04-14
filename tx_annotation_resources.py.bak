@@ -38,11 +38,7 @@ v7_tissues_to_drop = ["Bladder", "Brain_Spinalcord_cervicalc_1_", "Brain_Substan
 
 phylocsf_file_path = "gs://gnomad-public/papers/2019-tx-annotation/data/other_data/phylocsf_data.tsv.bgz"
 
-#vep_config = vep_config_path("GRCh37")   #<-- Commented this line as at 2023-03-24 17:14GMT (HD)
-#
-#vep_config = "/home/hammie/DATA/.vep/homo_sapiens_vep_109_GRCh38.tar.gz"   #<-- This line 'new' code as at 2023-03-24 17:15GMT (HD), and commented this line as at 2023-03-24 20:26GMT (HD).
-#
-vep_config = "/home/hammie/DATA/.vep/vep101-GRCh38.json"   #<-- This line 'new' code as at 2023-03-24 20:26GMT (HD).
+vep_config = vep_config_path("GRCh37")
 
 # Fetal RNA-seq
 hbdr_fetal_tissue_summary_ht_path = "gs://gnomad-public/papers/2019-tx-annotation/data/HBDR_fetal_RNAseq/HBDR.tissue_names.medians.021520.mt"
